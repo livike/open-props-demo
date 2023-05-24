@@ -1,0 +1,73 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+/* The :root CSS pseudo-class matches the root element of a tree representing the document. In HTML, :root represents the <html> element and is identical to the selector html , except that its specificity is higher. */
+/* This way you can define variables in CSS (This is purely a CSS way) */
+:root {
+  --brand: var(--brand-purple);
+  /* or you can entirety owerwrite the --brand */ 
+  /* uncomment to try out */
+  /* --brand: var(--brand-light); */
+
+}
+/* you can test the preferred color scheme in Chrome: Ctrl+Shift+P (Windows) or Cmd+Shift+P (Mac), In the Run> input start typing emulate... and click on the Emulate CSS prefers-color-scheme: dark or light*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: var(--lime-2);
+  }
+}
+
+html {
+  --brand-purple: var(--purple-5);
+}
+
+h1,
+h2,
+h3 {
+  /* use the --brand variable we defined for the :root selector*/
+  color: var(--brand);
+  margin-block: var(--size-5);
+}
+
+h1 {
+  /* using fluid font size */
+  font-size: var(--font-size-fluid-3);
+  /* using prbuild animations */
+  animation: var(--animation-slide-in-up) forwards;
+}
+
+.intro {
+  /* background and color to use without normalize or to overwrite things in it */
+  /* background-color: var(--gray-9);
+  color: var(--gray-3); */
+
+  /* --surface variable from the normalize css */
+  background: var(--surface-3);
+
+  padding-block: var(--size-9);
+  margin-block-end: var(--size-9);
+  box-shadow: var(--shadow-3);
+}
+
+.container {
+  /* a modern way to make a basic responsive width */
+  width: min(100% - 2rem, 50rem);
+  margin-inline: auto;
+}
+
+.box-wrapper {
+  /* put it in the center */
+  display: grid;
+  place-content: center;
+}
+
+.box {
+  margin-block: var(--size-5);
+  padding: var(--size-4);
+  border: var(--border-size-1) solid var(--gray-1);
+  border-radius: var(--radius-3);
+  /* gradient */
+  background: var(--gradient-3);
+}
